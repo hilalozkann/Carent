@@ -1,0 +1,76 @@
+﻿@model RentProject.Models.User
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 style="color: white">Sign up in a minute!</h1>
+
+
+<hr />
+<body style="background-image: url('https://www.dejavurentacar.com/wp-content/uploads/2019/02/Antalya-Rent-A-Car-Firmaları.jpg')"/>
+<div class="row" style="color: white">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Surname" class="control-label"></label>
+                <input asp-for="Surname" class="form-control" />
+                <span asp-validation-for="Surname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GovIdNo" class="control-label">Government Identity Number</label>
+                <input asp-for="GovIdNo" class="form-control" />
+                <span asp-validation-for="GovIdNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="address" class="control-label">Address</label>
+                <input asp-for="address" class="form-control" />
+                <span asp-validation-for="address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label">Phone Number</label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="email" class="control-label">E-mail</label>
+                <input asp-for="email" class="form-control" />
+                <span asp-validation-for="email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="password" class="control-label">Password</label>
+                <input asp-for="password" class="form-control" />
+                <span asp-validation-for="password" class="text-danger"></span>
+            </div>
+      @*      <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="verifiedAccount" /> @Html.DisplayNameFor(model => model.verifiedAccount)
+                </label>
+            </div>
+      *@
+            <div class="form-group">
+                <label asp-for="BankAccount" class="control-label">Bank Account</label>
+                <input asp-for="BankAccount" class="form-control" />
+                <span asp-validation-for="BankAccount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Sign Up" class="btn btn-primary" />
+              
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

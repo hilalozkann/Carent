@@ -1,0 +1,73 @@
+﻿@using Microsoft.AspNetCore.Http;
+@using Microsoft.AspNetCore.Http.Extensions
+@{
+    string msg="";
+    bool sessionIsOn = false;
+    if (Context.Session.Get("username") != null)
+    {
+        msg = "Welcome "+ Convert.ToBase64String(Context.Session.Get("username"))+ "!"; 
+        sessionIsOn=true;
+    }
+
+   /* void sessionEnd()
+    {
+        
+        Context.Session.Clear();
+    } */  
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+@model RentProject.Models.User
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - RentProject</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<header class="header" style="height:75px">
+
+    <div id="menu-btn" class="fas fa-bars"></div>
+
+    <a asp-controller="Home"asp-action="index" class="logo"> <span>Ca</span>Rent </a>
+
+    <nav class="navbar">
+        <a asp-controller="Home"asp-action="index">home</a>
+        <a asp-controller="Home"asp-action="Cars">Cars</a>
+        <a asp-controller="Home"asp-action="AddCar">services</a>
+        <a href="#reviews">reviews</a>
+        <a href="#contact">contact</a>
+    </nav>
+
+     <!-- buraya div halinde araç ekle vs butonları gelicek, 
+    ama sanırım logn olduktan sonra login yazısının olmadıgı bır page daha lazım ,
+arac etkle butonlarının öyle konması lazım  -->
+    <div id="login-btn">
+        <button class="btn">Login</button>
+        <i class="far fa-user"></i>
+    </div>
+</header> 
+
+<body>
+    
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    
+
+    <footer class="border-top footer text-muted">
+       
+            &copy; 2021 - RentProject - <a asp-area="" asp-controller="Home" asp-action="Privacy" style="text-align:center;">Privacy</a>
+        
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+    
+</body>
+</html>
